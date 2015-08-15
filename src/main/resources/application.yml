@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true 
+    
+---
+
+spring:
+  profiles: localhostmysql
+  application:
+    name: Spring Boot Local Hosted Mysql
+  datasource:
+    url: jdbc:mysql://localhost/qanda
+    username: darko
+    password: secretpassword
+    
+---    
+
+spring:
+  profiles: localhostpostgresql
+  jpa:
+    database: POSTGRESQL
+  application:
+    name: Spring Boot Local Hosted PosthreSQL
+  datasource:
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/qanda
+    username: darko
+    password: secretpassword
+
+
+    
+    
