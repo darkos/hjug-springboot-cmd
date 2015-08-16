@@ -1,4 +1,12 @@
 docker run --name hjug-mysql -e MYSQL_ROOT_PASSWORD=example -e MYSQL_USER=darko -e MYSQL_PASSWORD=secretpassword -e MYSQL_DATABASE=qanda -d mariadb
 docker build -t darkos/hjug-cmd:v1 .
 docker run -it --rm --name hjug-cmd --link hjug-mysql:mysql darkos/hjug-cmd:v1 /bin/bash
-java -jar -Dspring.profiles.active=dockerizedmaria hjug-springboot-cmd-0.0.1-SNAPSHOT.jar 
+java -jar -Dspring.profiles.active=dockerizedmaria hjug-springboot-cmd-0.0.1-SNAPSHOT.jar
+---
+docker run --name hjug-postgres -e DB_NAME=postgres -e DB_USER=postgres -e DB_PASS=postgres -e DB_SERVICE=postgres -e DB_PORT=5432 -d postgres:9.3
+
+docker run -it --rm --name hjug-cmd --link hjug-postgres:postgres darkos/hjug-cmd:v1 /bin/bash
+java -jar -Dspring.profiles.active=dockerizedpostgres hjug-springboot-cmd-0.0.1-SNAPSHOT.jar
+
+docker run -it --rm -v $(pwd):/backups --link=hjug-postgres:postgres postgres:9.3 bash 
+psql -h $POSTGRES_PORT_5432_TCP_ADDR -p 5432 -U postgres -W postgres postgres
