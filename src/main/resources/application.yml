@@ -31,6 +31,19 @@ spring:
     url: jdbc:postgresql://localhost:5432/qanda
     username: darko
     password: secretpassword
+    
+---
+    
+spring:
+  profiles: dockerizedmaria
+  application:
+    name: Spring Boot Dockerized MariaDB
+  datasource:
+      url: jdbc:mysql://${MYSQL_PORT_3306_TCP_ADDR}/qanda
+      username: darko
+      password: secretpassword
+      
+      
 
 
     

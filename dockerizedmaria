@@ -1,0 +1,4 @@
+docker run --name hjug-mysql -e MYSQL_ROOT_PASSWORD=example -e MYSQL_USER=darko -e MYSQL_PASSWORD=secretpassword -e MYSQL_DATABASE=qanda -d mariadb
+docker build -t darkos/hjug-cmd:v1 .
+docker run -it --rm --name hjug-cmd --link hjug-mysql:mysql darkos/hjug-cmd:v1 /bin/bash
+java -jar -Dspring.profiles.active=dockerizedmaria hjug-springboot-cmd-0.0.1-SNAPSHOT.jar 
