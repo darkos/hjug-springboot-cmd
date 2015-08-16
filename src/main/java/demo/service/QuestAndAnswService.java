@@ -92,6 +92,12 @@ public class QuestAndAnswService {
 		Comment ac = commentRepository.save(answerComment);
 	}
 	
+//	public void loadTestDataIfThereAreNoQuestions() {
+//		if(!questionRepository.findAll().iterator().hasNext()) {
+//			loadTestData();
+//		}
+//	}
+	
 	
 	
 }

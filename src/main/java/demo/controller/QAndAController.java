@@ -20,6 +20,8 @@ public class QAndAController implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
+		//qandaService.loadTestDataIfThereAreNoQuestions();
+		qandaService.loadTestData();
 		try (Scanner scanner = new Scanner(System.in)) {
 			log.info("Enter new command or type exit to exit");
 			log.info("you can type:");
