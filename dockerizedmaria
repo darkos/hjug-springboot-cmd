@@ -2,6 +2,8 @@ docker run --name hjug-mysql -e MYSQL_ROOT_PASSWORD=example -e MYSQL_USER=darko 
 docker build -t darkos/hjug-cmd:v1 .
 docker run -it --rm --name hjug-cmd --link hjug-mysql:mysql darkos/hjug-cmd:v1 /bin/bash
 java -jar -Dspring.profiles.active=dockerizedmaria hjug-springboot-cmd-0.0.1-SNAPSHOT.jar
+
+mysql -u darko -p -h $MYSQL_PORT_3306_TCP_ADDR qanda
 ---
 docker run --name hjug-postgres -e DB_NAME=postgres -e DB_USER=postgres -e DB_PASS=postgres -e DB_SERVICE=postgres -e DB_PORT=5432 -d postgres:9.3
 
