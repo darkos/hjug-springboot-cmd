@@ -22,7 +22,7 @@ public class QAndAController implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		//qandaService.loadTestDataIfThereAreNoQuestions();
 		qandaService.loadTestData();
-		try (Scanner scanner = new Scanner(System.in)) {
+		/*try (Scanner scanner = new Scanner(System.in)) {
 			log.info("Enter new command or type exit to exit");
 			log.info("you can type:");
 			log.info("cquest - to insert one Question");
@@ -48,7 +48,7 @@ public class QAndAController implements CommandLineRunner {
 				}
 				text = scanner.nextLine();
 			}
-		}
+		}*/
 	}
 	
 	
