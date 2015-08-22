@@ -1,5 +1,7 @@
 package demo.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -74,10 +76,18 @@ public class QuestAndAnswService {
 	}
 	
 	public void loadTestData() {
+		Map<String, String> env = System.getenv();
+		
 		Question question = new Question();
+		question.setTitle("Question " + env.get("ACTIVE_PROFILE"));
+		question.setText("Question text " + env.get("ACTIVE_PROFILE"));
+		Question q = questionRepository.save(question);
+		
+		question = new Question();
 		question.setTitle("Question Title");
 		question.setText("Question text");
-		Question q = questionRepository.save(question);
+		q = questionRepository.save(question);
+		
 		Answer answer = new Answer();
 		answer.setAnswer("Answer for Question Title");
 		answer.setQuestion(question);
